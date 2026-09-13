@@ -13,7 +13,6 @@ export const profile = {
   phone: "+91 8667707950",
   linkedin: "https://www.linkedin.com/in/ganesh200428",
   github: "https://github.com/ganesh200428",
-  status: "Available for Opportunities",
 };
 
 export const navLinks = [

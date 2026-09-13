@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { navLinks, profile } from "../../data/portfolio";
+import { navLinks } from "../../data/portfolio";
 
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
@@ -77,14 +77,6 @@ export default function Navbar() {
             </li>
           ))}
         </ul>
-
-        <div className="hidden items-center gap-2 md:flex">
-          <span className="relative flex h-2 w-2">
-            <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-emerald-400 opacity-75" />
-            <span className="relative inline-flex h-2 w-2 rounded-full bg-emerald-400" />
-          </span>
-          <span className="text-[11px] font-medium text-white/70">{profile.status}</span>
-        </div>
 
         <button
           data-cursor="button"

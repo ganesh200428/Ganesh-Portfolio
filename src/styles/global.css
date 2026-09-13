@@ -1,0 +1,185 @@
+@import "tailwindcss";
+
+@theme {
+  --font-display: "Space Grotesk", "Inter", system-ui, sans-serif;
+  --font-body: "Inter", system-ui, sans-serif;
+
+  --color-void: #05060f;
+  --color-navy: #0a0e23;
+  --color-ink: #0d1224;
+  --color-electric: #3b82f6;
+  --color-cyan: #22d3ee;
+  --color-violet: #8b5cf6;
+  --color-magenta: #ec4899;
+  --color-amber: #fb923c;
+  --color-mint: #34d399;
+}
+
+:root {
+  color-scheme: dark;
+}
+
+html {
+  scroll-behavior: smooth;
+  background: var(--color-void);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+}
+
+body {
+  font-family: var(--font-body);
+  background: var(--color-void);
+  color: #e7ecff;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+
+.font-display {
+  font-family: var(--font-display);
+}
+
+::selection {
+  background: var(--color-cyan);
+  color: #05060f;
+}
+
+/* Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: var(--color-void);
+}
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(var(--color-electric), var(--color-violet));
+  border-radius: 999px;
+}
+
+/* Glassmorphism helper */
+.glass {
+  background: rgba(255, 255, 255, 0.04);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+/* Neon text/border glow utilities */
+.glow-text {
+  text-shadow: 0 0 12px currentColor, 0 0 32px currentColor;
+}
+.glow-border {
+  box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.08), 0 0 24px -6px currentColor;
+}
+
+/* Gradient background wash used behind sections */
+.bg-aurora {
+  background: radial-gradient(60% 50% at 15% 10%, rgba(59, 130, 246, 0.18), transparent 60%),
+    radial-gradient(50% 45% at 85% 20%, rgba(139, 92, 246, 0.16), transparent 60%),
+    radial-gradient(55% 45% at 50% 90%, rgba(236, 72, 153, 0.12), transparent 60%);
+}
+
+/* Custom cursor: hide native cursor on fine-pointer devices where JS cursor is active */
+.cursor-enabled,
+.cursor-enabled a,
+.cursor-enabled button {
+  cursor: none;
+}
+
+.eyebrow {
+  font-family: var(--font-display);
+  letter-spacing: 0.35em;
+  text-transform: uppercase;
+  font-size: 0.7rem;
+  color: var(--color-cyan);
+}
+
+.reveal {
+  opacity: 0;
+  transform: translateY(40px);
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-8px);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-\[float_5s_ease-in-out_infinite\] {
+    animation: none;
+  }
+}
+
+@keyframes sweep {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(400%);
+  }
+}
+
+@keyframes draw {
+  0% {
+    stroke-dashoffset: 100;
+  }
+  50% {
+    stroke-dashoffset: 0;
+  }
+  100% {
+    stroke-dashoffset: -100;
+  }
+}
+
+@keyframes growWidth {
+  0%, 100% {
+    opacity: 0.45;
+  }
+  50% {
+    opacity: 1;
+  }
+}
+
+@keyframes barPulse {
+  0%, 100% {
+    transform: scaleY(0.72);
+    opacity: 0.4;
+  }
+  50% {
+    transform: scaleY(1);
+    opacity: 0.75;
+  }
+}
+
+@keyframes ringSpin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes flowDot {
+  0%, 100% {
+    transform: translateY(-50%) scale(1);
+    opacity: 1;
+  }
+  50% {
+    transform: translateY(-50%) scale(1.6);
+    opacity: 0.6;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  [style*="animation:"] {
+    animation: none !important;
+  }
+}

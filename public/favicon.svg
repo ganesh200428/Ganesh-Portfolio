@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+    <defs>
+        <linearGradient id="bg" x1="0" y1="0" x2="64" y2="64" gradientUnits="userSpaceOnUse">
+            <stop offset="0%" stop-color="#0a0e23" />
+            <stop offset="55%" stop-color="#1d2a5e" />
+            <stop offset="100%" stop-color="#3b1f5e" />
+        </linearGradient>
+        <linearGradient id="glow" x1="0" y1="0" x2="64" y2="64" gradientUnits="userSpaceOnUse">
+            <stop offset="0%" stop-color="#3b82f6" />
+            <stop offset="100%" stop-color="#8b5cf6" />
+        </linearGradient>
+    </defs>
+    <rect x="2" y="2" width="60" height="60" rx="16" fill="url(#bg)" />
+    <rect x="2" y="2" width="60" height="60" rx="16" fill="none" stroke="url(#glow)" stroke-width="2" stroke-opacity="0.7" />
+    <text
+        x="24"
+        y="41"
+        text-anchor="middle"
+        font-family="system-ui, -apple-system, Segoe UI, Arial, sans-serif"
+        font-weight="700"
+        font-size="26"
+        fill="#f5f7ff"
+        letter-spacing="-1"
+    >GS</text>
+    <circle cx="48" cy="43" r="3.4" fill="#22d3ee" />
+</svg>

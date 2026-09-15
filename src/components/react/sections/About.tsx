@@ -57,8 +57,8 @@ export default function About() {
             <ProfilePhoto />
             <div>
               <p className="font-display text-2xl leading-relaxed text-white md:text-3xl">
-                I am a <span className="text-cyan-300">Data Analyst</span> focused on transforming raw data into
-                meaningful insights, interactive dashboards, and practical business solutions.
+                <span className="text-cyan-300">Data Analyst</span> at heart, turning messy, real-world data into
+                validated models, production-ready dashboards, and decisions stakeholders can act on with confidence.
               </p>
               <p className="mt-6 max-w-xl text-white/60">
                 {profile.experienceYears} years turning stakeholder requirements into production-ready Power BI &

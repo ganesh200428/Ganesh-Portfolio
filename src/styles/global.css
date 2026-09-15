@@ -67,6 +67,15 @@ body {
   border: 1px solid rgba(255, 255, 255, 0.08);
 }
 
+/* Opaque variant for the fixed navbar so scrolling content can't bleed through and
+   overlap the nav labels. */
+.glass-nav {
+  background: rgba(7, 9, 20, 0.82);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
 /* Neon text/border glow utilities */
 .glow-text {
   text-shadow: 0 0 12px currentColor, 0 0 32px currentColor;

@@ -45,7 +45,7 @@ export default function Navbar() {
         scrolled ? "scale-[0.97]" : "scale-100"
       }`}
     >
-      <nav className="glass flex items-center justify-between rounded-full px-4 py-2.5 shadow-[0_8px_40px_-12px_rgba(0,0,0,0.6)] md:px-6 md:py-3">
+      <nav className="glass-nav flex items-center justify-between rounded-full px-4 py-2.5 shadow-[0_8px_40px_-12px_rgba(0,0,0,0.6)] md:px-6 md:py-3">
         <a
           href="#home"
           data-cursor="button"
@@ -97,7 +97,7 @@ export default function Navbar() {
       </nav>
 
       {open && (
-        <div className="glass mt-3 rounded-3xl p-4 lg:hidden">
+        <div className="glass-nav mt-3 rounded-3xl p-4 lg:hidden">
           <ul className="flex flex-col gap-1">
             {navLinks.map((link) => (
               <li key={link.href}>

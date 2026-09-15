@@ -84,11 +84,14 @@ function DonutChart({ fx, fy, z }: { fx: number; fy: number; z: number }) {
   );
 }
 
-function NetworkNodes() {
-  const a = useEdgePosition(-0.82, 0.42, -4.5);
-  const b = useEdgePosition(-0.65, 0.62, -5);
-  const c = useEdgePosition(-0.9, 0.14, -4);
-  const d = useEdgePosition(-0.78, -0.3, -4.5);
+function NetworkNodes({ isMobile }: { isMobile: boolean }) {
+  const layout = isMobile
+    ? ([[-0.7, 0.88, -4.5], [-0.4, 0.9, -5], [-0.75, -0.82, -4], [-0.42, -0.86, -4.5]] as const)
+    : ([[-0.82, 0.42, -4.5], [-0.65, 0.62, -5], [-0.9, 0.14, -4], [-0.78, -0.3, -4.5]] as const);
+  const a = useEdgePosition(...layout[0]);
+  const b = useEdgePosition(...layout[1]);
+  const c = useEdgePosition(...layout[2]);
+  const d = useEdgePosition(...layout[3]);
   const nodes = [a, b, c, d];
 
   return (
@@ -144,13 +147,20 @@ const SYMBOL_LAYOUT: { fx: number; fy: number; z: number }[] = [
   [0.46, -0.75, -4.3],
 ].map(([fx, fy, z]) => ({ fx, fy, z }));
 
-// Narrow/portrait screens have almost no horizontal margin, so mobile only frames the very
-// top and bottom of the hero (well clear of the centered text block) instead of the sides.
+// Narrow/portrait screens have almost no vertical margin around the centered text, so mobile
+// spreads the full symbol set across the top and bottom bands instead of the sides. The bottom
+// band leaves the outer corners (~±0.8) clear for the bar/donut chart nodes.
 const MOBILE_SYMBOL_LAYOUT: { fx: number; fy: number; z: number }[] = [
-  [-0.34, 0.78, -4],
-  [0.34, 0.82, -4.5],
-  [-0.32, -0.7, -4],
-  [0.32, -0.74, -4.5],
+  [-0.82, 0.86, -4],
+  [-0.48, 0.92, -4.8],
+  [-0.16, 0.84, -4.2],
+  [0.16, 0.92, -5],
+  [0.48, 0.84, -4.4],
+  [0.82, 0.9, -4.6],
+  [-0.52, -0.8, -4],
+  [-0.18, -0.86, -4.6],
+  [0.18, -0.78, -4.2],
+  [0.52, -0.86, -5],
 ].map(([fx, fy, z]) => ({ fx, fy, z }));
 
 export default function HeroScene({ scrollProgress, reducedMotion, isMobile }: HeroSceneProps) {
@@ -171,13 +181,9 @@ export default function HeroScene({ scrollProgress, reducedMotion, isMobile }: H
 
       <ParticleField count={reducedMotion ? 200 : 700} />
 
-      {!isMobile && (
-        <>
-          <NetworkNodes />
-          <BarChartNode fx={0.78} fy={-0.62} z={-4} />
-          <DonutChart fx={-0.76} fy={-0.6} z={-4.2} />
-        </>
-      )}
+      <NetworkNodes isMobile={isMobile} />
+      <BarChartNode fx={isMobile ? 0.8 : 0.78} fy={isMobile ? -0.9 : -0.62} z={isMobile ? -4.8 : -4} />
+      <DonutChart fx={isMobile ? -0.8 : -0.76} fy={isMobile ? -0.9 : -0.6} z={isMobile ? -5.2 : -4.2} />
 
       {symbols.map((s, i) => (
         <FloatingSymbol key={s} text={s} color={PALETTE[i % PALETTE.length]} {...layout[i]} />

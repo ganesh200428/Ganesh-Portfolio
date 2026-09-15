@@ -10,6 +10,9 @@ export default function TiltCard({ children, className = "", intensity = 10 }: T
   const ref = useRef<HTMLDivElement>(null);
 
   const onMove = (e: React.PointerEvent) => {
+    // Touch/pen drags fire pointermove during scroll gestures too; only tilt for mouse-like
+    // pointers so the transform never fights with mobile scrolling.
+    if (e.pointerType !== "mouse") return;
     const el = ref.current;
     if (!el) return;
     const rect = el.getBoundingClientRect();

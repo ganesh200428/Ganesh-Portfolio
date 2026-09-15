@@ -10,6 +10,8 @@ function DashboardCard({ d }: { d: (typeof dashboards)[number] }) {
   const [hovered, setHovered] = useState(false);
 
   const onMove = (e: React.PointerEvent) => {
+    // Skip on touch/pen so the spotlight tracking never competes with mobile scroll gestures.
+    if (e.pointerType !== "mouse") return;
     const el = cardRef.current;
     if (!el) return;
     const rect = el.getBoundingClientRect();

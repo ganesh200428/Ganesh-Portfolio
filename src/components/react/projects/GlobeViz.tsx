@@ -46,7 +46,7 @@ function GlobeMesh() {
         <bufferGeometry>
           <bufferAttribute attach="attributes-position" args={[dotPositions, 3]} />
         </bufferGeometry>
-        <pointsMaterial size={0.02} color="#3b82f6" transparent opacity={0.55} />
+        <pointsMaterial size={0.045} color="#60a5fa" transparent opacity={0.85} sizeAttenuation />
       </points>
 
       {markerVecs.map((v, i) => (
@@ -71,7 +71,7 @@ function GlobeMesh() {
 export default function GlobeViz() {
   return (
     <div className="h-72 w-full overflow-hidden rounded-2xl border border-white/10 bg-[#070a18] sm:h-96">
-      <Canvas dpr={[1, 1.5]} camera={{ position: [0, 0, 4.2], fov: 50 }}>
+      <Canvas dpr={1} camera={{ position: [0, 0, 4.2], fov: 50 }}>
         <ambientLight intensity={0.7} />
         <pointLight position={[3, 3, 3]} intensity={1.2} color="#8b5cf6" />
         <GlobeMesh />

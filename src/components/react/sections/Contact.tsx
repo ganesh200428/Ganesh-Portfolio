@@ -22,9 +22,9 @@ export default function Contact() {
   return (
     <section id="contact" className="relative flex min-h-screen w-full items-center justify-center overflow-hidden px-6 py-24">
       <div className="absolute inset-0 bg-aurora" />
-      {mounted && !isMobile && !reducedMotion && (
+      {mounted && !reducedMotion && (
         <Suspense fallback={null}>
-          <ContactSphere />
+          <ContactSphere isMobile={isMobile} />
         </Suspense>
       )}
       <div className="pointer-events-none absolute inset-0 bg-gradient-to-b from-void via-transparent to-void" />

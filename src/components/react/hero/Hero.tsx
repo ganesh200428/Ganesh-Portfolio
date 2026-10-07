@@ -3,6 +3,7 @@ import gsap from "gsap";
 import { profile } from "../../../data/portfolio";
 import { useReducedMotion } from "../../../hooks/useReducedMotion";
 import { useIsMobile } from "../../../hooks/useIsMobile";
+import { useTheme } from "../../../hooks/useTheme";
 
 const HeroScene = lazy(() => import("./HeroScene"));
 
@@ -11,6 +12,7 @@ export default function Hero() {
   const scrollProgress = useRef(0);
   const reducedMotion = useReducedMotion();
   const isMobile = useIsMobile();
+  const { theme } = useTheme();
   const [mounted, setMounted] = useState(false);
 
   useEffect(() => setMounted(true), []);
@@ -46,7 +48,7 @@ export default function Hero() {
       <div className="absolute inset-0">
         {mounted && (
           <Suspense fallback={null}>
-            <HeroScene scrollProgress={scrollProgress} reducedMotion={reducedMotion || isMobile} isMobile={isMobile} />
+            <HeroScene scrollProgress={scrollProgress} reducedMotion={reducedMotion || isMobile} isMobile={isMobile} light={theme === "light"} />
           </Suspense>
         )}
       </div>
@@ -56,7 +58,7 @@ export default function Hero() {
         className="pointer-events-none absolute inset-0"
         style={{
           background:
-            "radial-gradient(42% 38% at 50% 46%, rgba(5,6,15,0.55) 0%, rgba(5,6,15,0.2) 55%, transparent 78%)",
+            "radial-gradient(42% 38% at 50% 46%, rgba(var(--void-rgb),0.55) 0%, rgba(var(--void-rgb),0.2) 55%, transparent 78%)",
         }}
       />
 

@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { Bar, BarChart, ResponsiveContainer, XAxis, YAxis, Tooltip } from "recharts";
+import { useTheme } from "../../../hooks/useTheme";
 
 const STAGES = ["Natural Language", "AI", "SQL", "Database", "Result", "Chart"];
 const QUERY = "Show me monthly sales for the last 6 months.";
@@ -16,6 +17,7 @@ const RESULT = [
 export default function NLSQLDemo() {
   const [step, setStep] = useState(0);
   const [running, setRunning] = useState(false);
+  const light = useTheme().theme === "light";
 
   const run = () => {
     if (running) return;
@@ -72,9 +74,9 @@ export default function NLSQLDemo() {
           {step >= 5 ? (
             <ResponsiveContainer width="100%" height="100%">
               <BarChart data={RESULT}>
-                <XAxis dataKey="month" tick={{ fill: "rgba(255,255,255,0.5)", fontSize: 11 }} axisLine={false} tickLine={false} />
+                <XAxis dataKey="month" tick={{ fill: light ? "rgba(15,20,40,0.55)" : "rgba(255,255,255,0.5)", fontSize: 11 }} axisLine={false} tickLine={false} />
                 <YAxis hide />
-                <Tooltip contentStyle={{ background: "#0d1224", border: "1px solid rgba(255,255,255,0.1)" }} />
+                <Tooltip contentStyle={light ? { background: "#ffffff", border: "1px solid rgba(15,20,40,0.1)" } : { background: "#0d1224", border: "1px solid rgba(255,255,255,0.1)" }} />
                 <Bar dataKey="sales" fill="#22d3ee" radius={[6, 6, 0, 0]} />
               </BarChart>
             </ResponsiveContainer>

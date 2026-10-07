@@ -103,9 +103,9 @@ export default function SkillsUniverse() {
                 className="absolute -translate-x-1/2 -translate-y-1/2 cursor-pointer rounded-full px-3 py-1.5 text-xs font-semibold backdrop-blur-md transition-all duration-300"
                 style={{
                   transform: `translate3d(${p.x.toFixed(1)}px, ${p.y.toFixed(1)}px, ${p.z.toFixed(1)}px) translate(-50%, -50%)`,
-                  background: isRelated ? `${color}33` : "rgba(255,255,255,0.06)",
-                  border: `1px solid ${isRelated ? color : "rgba(255,255,255,0.15)"}`,
-                  color: isRelated ? "#fff" : "rgba(255,255,255,0.8)",
+                  background: isRelated ? `${color}33` : "rgba(var(--fg-rgb),0.06)",
+                  border: `1px solid ${isRelated ? color : "rgba(var(--fg-rgb),0.15)"}`,
+                  color: isRelated ? "rgb(var(--fg-rgb))" : "rgba(var(--fg-rgb),0.8)",
                   opacity: dim ? 0.25 : 1,
                   boxShadow: isRelated ? `0 0 18px ${color}` : "none",
                 }}

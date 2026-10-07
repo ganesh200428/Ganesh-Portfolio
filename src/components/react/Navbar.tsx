@@ -1,10 +1,12 @@
 import { useEffect, useState } from "react";
 import { navLinks } from "../../data/portfolio";
+import { useTheme } from "../../hooks/useTheme";
 
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
   const [active, setActive] = useState("#home");
+  const { theme, toggle } = useTheme();
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 40);
@@ -78,6 +80,25 @@ export default function Navbar() {
           ))}
         </ul>
 
+        <div className="flex items-center gap-1">
+        <button
+          data-cursor="button"
+          onClick={toggle}
+          className="flex h-8 w-8 items-center justify-center rounded-full text-white/70 transition-colors hover:bg-white/10 hover:text-cyan-300"
+          aria-label={theme === "dark" ? "Switch to light mode" : "Switch to dark mode"}
+        >
+          {theme === "dark" ? (
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" className="h-4 w-4">
+              <circle cx="12" cy="12" r="4" />
+              <path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4" />
+            </svg>
+          ) : (
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" className="h-4 w-4">
+              <path d="M20 14.5A8 8 0 0 1 9.5 4a8 8 0 1 0 10.5 10.5Z" />
+            </svg>
+          )}
+        </button>
+
         <button
           data-cursor="button"
           onClick={() => setOpen((o) => !o)}
@@ -94,6 +115,7 @@ export default function Navbar() {
             />
           </span>
         </button>
+        </div>
       </nav>
 
       {open && (

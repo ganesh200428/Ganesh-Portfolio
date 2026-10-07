@@ -17,7 +17,7 @@ function useEdgePosition(fx: number, fy: number, z: number): [number, number, nu
   }, [camera, viewport, fx, fy, z]);
 }
 
-function ParticleField({ count = 700 }: { count?: number }) {
+function ParticleField({ count = 700, color }: { count?: number; color: string }) {
   const positions = useMemo(() => {
     const arr = new Float32Array(count * 3);
     for (let i = 0; i < count; i++) {
@@ -39,7 +39,7 @@ function ParticleField({ count = 700 }: { count?: number }) {
       <bufferGeometry>
         <bufferAttribute attach="attributes-position" args={[positions, 3]} />
       </bufferGeometry>
-      <pointsMaterial size={0.045} color="#7dd3fc" transparent opacity={0.65} sizeAttenuation />
+      <pointsMaterial size={0.045} color={color} transparent opacity={0.65} sizeAttenuation />
     </points>
   );
 }
@@ -129,6 +129,7 @@ interface HeroSceneProps {
   scrollProgress: React.RefObject<number>;
   reducedMotion: boolean;
   isMobile: boolean;
+  light?: boolean;
 }
 
 // Fractions of the half-width/half-height of the visible frustum at each element's depth:
@@ -163,7 +164,8 @@ const MOBILE_SYMBOL_LAYOUT: { fx: number; fy: number; z: number }[] = [
   [0.52, -0.86, -5],
 ].map(([fx, fy, z]) => ({ fx, fy, z }));
 
-export default function HeroScene({ scrollProgress, reducedMotion, isMobile }: HeroSceneProps) {
+export default function HeroScene({ scrollProgress, reducedMotion, isMobile, light = false }: HeroSceneProps) {
+  const bg = light ? "#f5f6fa" : "#05060f";
   const layout = isMobile ? MOBILE_SYMBOL_LAYOUT : SYMBOL_LAYOUT;
   const symbols = isMobile ? SYMBOLS.slice(0, layout.length) : SYMBOLS;
 
@@ -173,13 +175,13 @@ export default function HeroScene({ scrollProgress, reducedMotion, isMobile }: H
       camera={{ position: [0, 0, 8], fov: 55 }}
       gl={{ antialias: true, alpha: true }}
     >
-      <color attach="background" args={["#05060f"]} />
-      <fog attach="fog" args={["#05060f", 9, 21]} />
+      <color attach="background" args={[bg]} />
+      <fog attach="fog" args={[bg, 9, 21]} />
       <ambientLight intensity={0.7} />
       <pointLight position={[5, 5, 5]} intensity={1.4} color="#8b5cf6" />
       <pointLight position={[-5, -3, -2]} intensity={1.2} color="#22d3ee" />
 
-      <ParticleField count={reducedMotion ? 200 : 700} />
+      <ParticleField count={reducedMotion ? 200 : 700} color={light ? "#0891b2" : "#7dd3fc"} />
 
       <NetworkNodes isMobile={isMobile} />
       <BarChartNode fx={isMobile ? 0.8 : 0.78} fy={isMobile ? -0.9 : -0.62} z={isMobile ? -4.8 : -4} />

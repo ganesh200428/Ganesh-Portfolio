@@ -182,11 +182,17 @@ export const dashboards: DashboardPreview[] = [
   { name: "Finance Workspace (AI-Powered)", category: "Finance", description: "Natural language querying, executive KPI dashboards, and role-based reporting.", accent: "#60a5fa" },
 ];
 
-export const certifications = [
-  { name: "Power BI Certification", issuer: "Python, MySQL and Power BI · Besant Technologies", icon: "chart" as const },
-  { name: "Claude Code 101", issuer: "Anthropic", icon: "code" as const },
-  { name: "Excel Automation using AI", issuer: "Office Master", icon: "grid" as const },
-  { name: "AI Tools and ChatGPT Workshop", issuer: "be10x", icon: "sparkles" as const },
+export const certifications: { name: string; issuer: string; icon: "chart" | "code" | "grid" | "sparkles"; url?: string }[] = [
+  { name: "Power BI Certification", issuer: "Python, MySQL and Power BI · Besant Technologies", icon: "chart" },
+  { name: "Claude Code 101", issuer: "Anthropic", icon: "code" },
+  {
+    name: "AI Fluency: Framework and Foundations",
+    issuer: "Claude Academy · Anthropic · Sep 2026",
+    icon: "sparkles",
+    url: "https://academy.claude.com/verify/9946073a2d6dafe0681082aa8c46609a",
+  },
+  { name: "Excel Automation using AI", issuer: "Office Master", icon: "grid" },
+  { name: "AI Tools and ChatGPT Workshop", issuer: "be10x", icon: "sparkles" },
 ];
 
 export const dataStorySteps = [

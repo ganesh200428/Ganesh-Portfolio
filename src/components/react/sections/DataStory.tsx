@@ -89,16 +89,16 @@ export default function DataStory() {
                   onClick={() => goTo(i)}
                   className="flex w-36 shrink-0 snap-center flex-col items-center gap-3 rounded-2xl border px-4 py-6 text-center font-display text-sm font-semibold transition-all duration-300"
                   style={{
-                    borderColor: isActive ? "#22d3ee" : "rgba(255,255,255,0.12)",
-                    color: isActive ? "#e0fbff" : "rgba(255,255,255,0.45)",
-                    background: isActive ? "rgba(34,211,238,0.14)" : "rgba(255,255,255,0.03)",
+                    borderColor: isActive ? "#22d3ee" : "rgba(var(--fg-rgb),0.12)",
+                    color: isActive ? "var(--story-active)" : "rgba(var(--fg-rgb),0.45)",
+                    background: isActive ? "rgba(34,211,238,0.14)" : "rgba(var(--fg-rgb),0.03)",
                     boxShadow: isActive ? "0 20px 45px -10px rgba(34,211,238,0.55)" : "none",
                     transform: isActive ? "scale(1.05)" : "scale(0.94)",
                   }}
                 >
                   <span
                     className="flex h-7 w-7 items-center justify-center rounded-full border text-xs"
-                    style={{ borderColor: isActive ? "#22d3ee" : "rgba(255,255,255,0.2)" }}
+                    style={{ borderColor: isActive ? "#22d3ee" : "rgba(var(--fg-rgb),0.2)" }}
                   >
                     {i + 1}
                   </span>
@@ -126,15 +126,15 @@ export default function DataStory() {
                         transform: `rotateY(${rotateY}deg) translateZ(${translateZ}px) scale(${scale})`,
                         transformStyle: "preserve-3d",
                         opacity,
-                        borderColor: offset === 0 ? "#22d3ee" : "rgba(255,255,255,0.12)",
-                        color: offset === 0 ? "#e0fbff" : "rgba(255,255,255,0.45)",
-                        background: offset === 0 ? "rgba(34,211,238,0.14)" : "rgba(255,255,255,0.03)",
+                        borderColor: offset === 0 ? "#22d3ee" : "rgba(var(--fg-rgb),0.12)",
+                        color: offset === 0 ? "var(--story-active)" : "rgba(var(--fg-rgb),0.45)",
+                        background: offset === 0 ? "rgba(34,211,238,0.14)" : "rgba(var(--fg-rgb),0.03)",
                         boxShadow: offset === 0 ? "0 20px 45px -10px rgba(34,211,238,0.55)" : "none",
                       }}
                     >
                       <span
                         className="mx-auto mb-2 flex h-6 w-6 items-center justify-center rounded-full border text-[10px]"
-                        style={{ borderColor: offset === 0 ? "#22d3ee" : "rgba(255,255,255,0.2)" }}
+                        style={{ borderColor: offset === 0 ? "#22d3ee" : "rgba(var(--fg-rgb),0.2)" }}
                       >
                         {i + 1}
                       </span>

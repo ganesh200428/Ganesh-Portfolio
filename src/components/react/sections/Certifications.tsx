@@ -52,6 +52,17 @@ export default function Certifications() {
               </div>
               <h3 className="font-display text-lg font-semibold text-white">{cert.name}</h3>
               <p className="mt-2 text-sm text-white/60">{cert.issuer}</p>
+              {cert.url && (
+                <a
+                  data-cursor="button"
+                  href={cert.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="mt-4 inline-flex text-xs font-semibold text-cyan-300 hover:underline"
+                >
+                  Verify credential ↗
+                </a>
+              )}
             </TiltCard>
           </Reveal>
         ))}

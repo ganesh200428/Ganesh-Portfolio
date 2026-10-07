@@ -65,7 +65,7 @@ export default function CustomCursor() {
           width: ringSize,
           height: ringSize,
           borderColor:
-            variant === "project" ? "rgba(236,72,153,0.7)" : variant === "button" ? "rgba(34,211,238,0.8)" : "rgba(255,255,255,0.35)",
+            variant === "project" ? "rgba(236,72,153,0.7)" : variant === "button" ? "rgba(34,211,238,0.8)" : "rgba(var(--fg-rgb),0.35)",
           willChange: "transform",
         }}
       >

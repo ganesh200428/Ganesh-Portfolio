@@ -23,6 +23,10 @@ const {
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
     <meta property="og:type" content="website" />
+    <script is:inline>
+      // Apply the saved theme before first paint to avoid a flash.
+      if (localStorage.getItem("gs-theme") === "light") document.documentElement.classList.add("light");
+    </script>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link

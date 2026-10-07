@@ -1,26 +1,18 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
     <defs>
         <linearGradient id="bg" x1="0" y1="0" x2="64" y2="64" gradientUnits="userSpaceOnUse">
-            <stop offset="0%" stop-color="#0a0e23" />
-            <stop offset="55%" stop-color="#1d2a5e" />
-            <stop offset="100%" stop-color="#3b1f5e" />
+            <stop offset="0%" stop-color="#0b1030" />
+            <stop offset="100%" stop-color="#1a1240" />
         </linearGradient>
-        <linearGradient id="glow" x1="0" y1="0" x2="64" y2="64" gradientUnits="userSpaceOnUse">
+        <linearGradient id="bar" x1="0" y1="52" x2="0" y2="12" gradientUnits="userSpaceOnUse">
             <stop offset="0%" stop-color="#3b82f6" />
-            <stop offset="100%" stop-color="#8b5cf6" />
+            <stop offset="100%" stop-color="#22d3ee" />
         </linearGradient>
     </defs>
-    <rect x="2" y="2" width="60" height="60" rx="16" fill="url(#bg)" />
-    <rect x="2" y="2" width="60" height="60" rx="16" fill="none" stroke="url(#glow)" stroke-width="2" stroke-opacity="0.7" />
-    <text
-        x="24"
-        y="41"
-        text-anchor="middle"
-        font-family="system-ui, -apple-system, Segoe UI, Arial, sans-serif"
-        font-weight="700"
-        font-size="26"
-        fill="#f5f7ff"
-        letter-spacing="-1"
-    >GS</text>
-    <circle cx="48" cy="43" r="3.4" fill="#22d3ee" />
+    <rect width="64" height="64" rx="14" fill="url(#bg)" />
+    <rect x="12" y="36" width="9" height="16" rx="2.5" fill="url(#bar)" opacity="0.55" />
+    <rect x="27.5" y="27" width="9" height="25" rx="2.5" fill="url(#bar)" opacity="0.8" />
+    <rect x="43" y="17" width="9" height="35" rx="2.5" fill="url(#bar)" />
+    <polyline points="14,28 31,19 46,10" fill="none" stroke="#a78bfa" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" />
+    <circle cx="46" cy="10" r="3.5" fill="#f472b6" />
 </svg>
